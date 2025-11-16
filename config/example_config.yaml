@@ -1,0 +1,9 @@
+robot:
+  type: mock  # or 'serial'
+  serial_port: /dev/ttyUSB0
+  baud: 115200
+
+gestures:
+  pinch: close_gripper
+  fist: home
+  open: open_gripper
