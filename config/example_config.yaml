@@ -1,9 +1,17 @@
 robot:
-  type: mock  # or 'serial'
+  type: mock  # or 'serial' or 'gpio'
   serial_port: /dev/ttyUSB0
   baud: 115200
+  # GPIO-specific example (only used when type: gpio)
+  gpio:
+    servo_pins:
+      gripper: 18
+    relay_pins:
+      power: 17
 
 gestures:
-  pinch: close_gripper
-  fist: home
-  open: open_gripper
+  pinch: "gpio:17:on"      # example: turn relay on
+  fist: "gpio:17:off"      # turn relay off
+  open: "servo:18:1.0"     # set servo to 1.0 (open)
+  one: "servo:18:0.0"      # one finger -> servo mid
+  two: "servo:18:-1.0"     # two fingers -> servo closed

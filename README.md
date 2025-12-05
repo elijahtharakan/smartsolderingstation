@@ -50,7 +50,10 @@ Alternative: set PYTHONPATH for the session (less recommended than `-m`):
 
 ```powershell
 #$env:PYTHONPATH = 'C:\path\to\project\root'
-& C:/Users/elija/AppData/Local/Microsoft/WindowsApps/python3.11.exe src\demo.py --robot mock
+# prefer running the module or the top-level launcher instead of executing inside `src/`:
+& C:/Users/elija/AppData/Local/Microsoft/WindowsApps/python3.11.exe -m src.demo --robot mock
+# or, run the provided launcher from the project root:
+python run_demo.py --robot mock
 ```
 
 Quick launcher (optional)
