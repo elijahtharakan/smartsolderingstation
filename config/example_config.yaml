@@ -6,12 +6,31 @@ robot:
   gpio:
     servo_pins:
       gripper: 18
+      pan: 12
     relay_pins:
       power: 17
 
 gestures:
-  pinch: "gpio:17:on"      # example: turn relay on
-  fist: "gpio:17:off"      # turn relay off
-  open: "servo:18:1.0"     # set servo to 1.0 (open)
-  one: "servo:18:0.0"      # one finger -> servo mid
-  two: "servo:18:-1.0"     # two fingers -> servo closed
+  # Basic finger count gestures
+  pinch: "gpio:17:on"      # Pinch gesture - turn relay on
+  fist: "gpio:17:off"      # Fist - turn relay off
+  one: "servo:18:0.2"      # One finger - servo position 1
+  two: "servo:18:0.4"      # Two fingers - servo position 2
+  three: "servo:18:0.6"    # Three fingers - servo position 3
+  four: "servo:18:0.8"     # Four fingers - servo position 4
+  five: "servo:18:1.0"     # Five fingers (open hand) - servo fully open
+  
+  # Directional gestures (gesture + direction)
+  two_left: "servo:12:-0.5"    # Two fingers + move left - pan servo left
+  two_right: "servo:12:0.5"    # Two fingers + move right - pan servo right
+  two_up: "temp:increase"      # Two fingers + move up - increase temperature
+  two_down: "temp:decrease"    # Two fingers + move down - decrease temperature
+  
+  three_left: "move:left"      # Three fingers + left - move left
+  three_right: "move:right"    # Three fingers + right - move right
+  three_up: "move:forward"     # Three fingers + up - move forward
+  three_down: "move:back"      # Three fingers + down - move back
+  
+  # Add more directional combos as needed
+  one_left: "speed:slow"
+  one_right: "speed:fast"
